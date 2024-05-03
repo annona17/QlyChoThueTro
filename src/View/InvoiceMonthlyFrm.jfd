@@ -1,0 +1,94 @@
+JFDML JFormDesigner: "8.2.0.0.331" Java: "17.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][97,fill][137,fill][438,fill][28,fill][95,fill][113,fill]"
+			"$rowConstraints": "[][][32][11][0][489][92]"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblInvoiceMonthly"
+				"text": "Invoice Monthly"
+				"font": new java.awt.Font( "Inter", 1, 36 )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1 7 1,align center center,grow 0 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "lblForMonth"
+				"text": "For Month"
+				"font": new java.awt.Font( "Inter", 0, 16 )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 3,alignx right,growx 0"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "txtForMonth"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 3 3, grow"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnLoad"
+				"text": "Load"
+				"font": new java.awt.Font( "Inter", 0, 16 )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 4 3"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "tblUnBillRoom"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( "" )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "STT" )
+						add( "ID room" )
+						add( "Name" )
+						add( "Type" )
+						add( "Description" )
+						add( "Price" )
+						add( "Status" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 50, 50, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 75, 75, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 100, 100, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 130, 130, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 200, 200, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 100, 100, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 0, 100, 100, true ) )
+					} )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 5 4 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1000, 750 )
+		} )
+	}
+}

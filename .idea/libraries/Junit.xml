@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Junit">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../ky2nam3/NhapMonCNPM/New folder/Junit.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../ky2nam3/NhapMonCNPM/New folder/mysql_jdbc.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
