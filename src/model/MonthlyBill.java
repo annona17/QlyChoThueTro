@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -55,29 +56,35 @@ public class MonthlyBill implements Serializable {
         }
         this.totalAmount = sum;
     }
-    public Date getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(createdDate);
     }
     public void setCreatedDate() {
-        // set createdDate = current date
         this.createdDate = new Date();
-
     }
-    public Date getPaymentTerm() {
-        return paymentTerm;
+    public String getPaymentTerm() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(paymentTerm);
     }
     public void setPaymentTerm() {
         // set paymentTerm = ngay 5 cua thang sau trong thang forMonth
         String[] arr = forMonth.split("-");
-        int month = Integer.parseInt(arr[1]);
-        int year = Integer.parseInt(arr[0]);
+        int month = Integer.parseInt(arr[0]);
+        int year = Integer.parseInt(arr[1]);
         if (month == 12) {
             month = 1;
             year++;
         } else {
             month++;
         }
-        this.paymentTerm = new Date(year, month, 5);
+        String str = year + "-" + month + "-05";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            this.paymentTerm = sdf.parse(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public RentedRoom getRentedRoom() {
         return rentedRoom;
@@ -97,6 +104,11 @@ public class MonthlyBill implements Serializable {
     public void setClient(Client client) {
         this.client = client;
     }
+    public String showTotal() {
+        return "TotalAmount: " + totalAmount + " VND" +
+                "\nCreatedDate: " + createdDate +
+                "\nPaymentTerm: " + paymentTerm;
 
+    }
 
 }

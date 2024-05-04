@@ -89,4 +89,23 @@ public class RentedRoom implements Serializable {
     public void setLstRPS(ArrayList<RegisterPrepaidService> lstRPS) {
         this.lstRPS = lstRPS;
     }
+    public String showRentedRoomInfo(){
+        return room.showRoomInfo()+
+                "* StartDate rent :   " + startDateRent + "\n" +
+                "* EndDate rent :   " + endDateRent;
+    }
+    public String showRevenues(){
+        String revenues = "";
+        revenues += "1. Price room: " + price + "\n\n" +
+                    "2. Electric bill: \n" +
+                    lstUPS.get(0).showUsedPostpaidService() + "\n" +
+                "3. Water bill: \n" +
+                    lstUPS.get(1).showUsedPostpaidService() + "\n" +
+                "4. Register prepaid service: \n";
+        for (RegisterPrepaidService rps : lstRPS) {
+            revenues += ("  +" + rps.showRegisterPrepaidService() + "\n");
+        }
+        revenues += "\n5. Debt: " + debt + "\n" ;
+        return revenues;
+    }
 }

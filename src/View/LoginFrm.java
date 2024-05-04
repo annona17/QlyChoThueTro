@@ -6,6 +6,7 @@ package View;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import dao.HostDAO;
@@ -15,7 +16,7 @@ import net.miginfocom.swing.*;
 /**
  * @author HP
  */
-public class LoginFrm extends JFrame {
+public class LoginFrm extends JFrame implements ActionListener {
     private JLabel label3;
     private JLabel lblUsername;
     private JTextField txtUsername;
@@ -27,9 +28,6 @@ public class LoginFrm extends JFrame {
         initComponents();
     }
 
-    private void btnLogin(ActionEvent e) {
-        // TODO add your code here
-    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
@@ -70,29 +68,32 @@ public class LoginFrm extends JFrame {
         //---- lblUsername ----
         lblUsername.setText("Username");
         lblUsername.setFont(new Font("Inter", Font.PLAIN, 20));
+        txtUsername.setFont(new Font("Inter", Font.PLAIN, 20));
         contentPane.add(lblUsername, "cell 2 3,alignx center,growx 0");
         contentPane.add(txtUsername, "cell 3 3 2 1, grow");
 
         //---- lblPassword ----
         lblPassword.setText("Password");
         lblPassword.setFont(new Font("Inter", Font.PLAIN, 20));
+        txtPassword.setFont(new Font("Inter", Font.PLAIN, 20));
         contentPane.add(lblPassword, "cell 2 4,alignx center,growx 0");
         contentPane.add(txtPassword, "cell 3 4 2 1, grow");
 
         //---- btnLogin ----
         btnLogin.setText("Login");
         btnLogin.setFont(new Font("Inter", Font.PLAIN, 20));
-        btnLogin.addActionListener(this::actionPerformed);
+        btnLogin.addActionListener(this);
         contentPane.add(btnLogin, "cell 4 6,grow");
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
+
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLogin)) {
             HostDAO hostDAO = new HostDAO();

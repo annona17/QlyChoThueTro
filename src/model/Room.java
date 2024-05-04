@@ -87,4 +87,12 @@ public class Room implements Serializable{
     public void setWaterIndex(int waterIndex) {
         this.waterIndex = waterIndex;
     }
+
+    public String showRoomInfo(){
+        return  "* ID Room :  " + ID + "\n" +
+                "* Name :   " + name + "\n" +
+                "* Type :   " + type + "\n" +
+                "* Description :   " + description + "\n" +
+                "* Price :   " + price + "\n";
+    }
 }

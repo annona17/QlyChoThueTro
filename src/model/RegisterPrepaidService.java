@@ -51,5 +51,7 @@ public class RegisterPrepaidService implements Serializable {
     public void setPrepaidService(PrepaidService prepaidService) {
         this.prepaidService = prepaidService;
     }
-
+    public String showRegisterPrepaidService() {
+        return prepaidService.getName() + ": " + prepaidService.getPrice() + " x " + quantity + " = " + totalAmount;
+    }
 }

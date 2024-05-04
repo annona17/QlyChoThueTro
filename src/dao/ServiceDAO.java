@@ -60,9 +60,10 @@ public class ServiceDAO {
     // lay thong tin cac dich vu tra truoc
     public ArrayList<RegisterPrepaidService> getRegisterPrepaidServiceInfo(int rentedRoomID){
         ArrayList<RegisterPrepaidService> lstRegPreS = new ArrayList<>();
-        String sql = "SELECT * FROM RegisterPrepaidService rps WHERE rps.rentedRoomID = ?";
+        String sql = "SELECT rps.ID, rps.quantity FROM RegisterPrepaidService rps WHERE rps.rentedRoomID = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, rentedRoomID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 RegisterPrepaidService rps = new RegisterPrepaidService();
@@ -79,11 +80,11 @@ public class ServiceDAO {
     }
     public PrepaidService getPrepaidServiceInfo(int rpsID) {
         PrepaidService preS = new PrepaidService();
-        String sql = "SELECT ps.ID, ps.name, ps.price, ps.note FROM PrepaidService ps, RegisterPrepaidService rpsWHERE rps.ID = ? AND rps.prepaidServiceID = ps.ID";
+        String sql = "SELECT ps.ID, ps.name, ps.price, ps.note FROM PrepaidService ps, RegisterPrepaidService rps WHERE rps.ID = ? AND rps.prepaidServiceID = ps.ID";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
             ps.setInt(1, rpsID);
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 preS.setID(rs.getInt("ID"));
                 preS.setName(rs.getString("name"));
@@ -95,4 +96,5 @@ public class ServiceDAO {
         }
         return preS;
     }
+
 }

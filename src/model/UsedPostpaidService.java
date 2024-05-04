@@ -62,9 +62,9 @@ public class UsedPostpaidService implements Serializable {
         float sum = 0;
         for (ServiceProgression sp : postpaidService.getServiceProgression()) {
             if (quantity >= sp.getToIndex()) {
-                sum += (sp.getToIndex()- sp.getFromIndex()) * sp.getPrice();
+                sum += (sp.getToIndex()- sp.getFromIndex() +1) * sp.getPrice();
             }else if (quantity >= sp.getFromIndex() && quantity < sp.getToIndex()) {
-                sum += (quantity - sp.getFromIndex()) * sp.getPrice();
+                sum += (quantity - sp.getFromIndex() + 1) * sp.getPrice();
             }else {
                 break;
             }
@@ -77,5 +77,26 @@ public class UsedPostpaidService implements Serializable {
     public void setPostpaidService(PostpaidService postpaidService) {
         this.postpaidService = postpaidService;
     }
-
+    public String showUsedPostpaidService(){
+        String s = "";
+        s += "  Old Index: " + oldIndex + ",   " +  "New Index: " + newIndex + ",   " + "Quantity: " + quantity + "\n";
+        int i = 1;
+        for (ServiceProgression sp : postpaidService.getServiceProgression()) {
+            if (quantity >= sp.getToIndex()) {
+                s += "      + Step " + i + " (" + sp.getFromIndex() + " - " + sp.getToIndex() + "): " +
+                        sp.getPrice() + " x " + (sp.getToIndex()- sp.getFromIndex() + 1)  + " = " +
+                        (sp.getToIndex()- sp.getFromIndex()) * sp.getPrice() + "\n";
+            }else if (quantity >= sp.getFromIndex() && quantity < sp.getToIndex()) {
+                s += "      + Step " + i + " ("+ sp.getFromIndex() + " - " + sp.getToIndex() + "): " +
+                        sp.getPrice() + " x " + (quantity - sp.getFromIndex() + 1) + " = " +
+                        (quantity - sp.getFromIndex()) * sp.getPrice() + "\n";
+            }else {
+                s += "      + Step " + i + " (" + sp.getFromIndex() + " - " + sp.getToIndex() + "): " +
+                        sp.getPrice() + " x " + 0 + " = " + 0 + "\n";
+            }
+            i++;
+        }
+        s += " => Total amount: " + totalAmount + "\n";
+        return s;
+    }
 }

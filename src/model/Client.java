@@ -60,6 +60,13 @@ public class Client implements Serializable {
         this.hometown = hometown;
     }
 
-
+    public String showClientInfo(){
+        return  "* ID :   " + ID + "\n" +
+                "* Name :   " + name + "\n" +
+                "* DOB :   " + dob + "\n" +
+                "* CCCD :   " + cccd + "\n" +
+                "* Tel :   " + tel + "\n" +
+                "* Hometown :   " + hometown;
+    }
 
 }
