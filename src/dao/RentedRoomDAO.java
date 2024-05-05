@@ -64,7 +64,7 @@ public class RentedRoomDAO extends DAO {
     }
     public Client getClientInfo(int rentedRoomID) {
         Client client = new Client();
-        String sql = "SELECT cl.ID, cl.name, cl.dob, cl.cccd, cl.tel, cl.hometown FROM RentedRoom rr, Contract c, Client cl WHERE rr.ID = ? AND c.rentedRoomID = rr.ID AND c.clientID = cl.ID";
+        String sql = "SELECT cl.ID, cl.name, cl.dob, cl.cccd, cl.tel, cl.hometown FROM RentedRoom rr, Contract c, Client cl WHERE rr.ID = ? AND rr.contractID = c.ID AND c.clientID = cl.ID";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, rentedRoomID);

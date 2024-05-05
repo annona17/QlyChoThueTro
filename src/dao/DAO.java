@@ -8,7 +8,7 @@ public class DAO {
 
     public DAO(){
         if(con == null) {
-            String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=QLyThueTro;instance=SERVER_NA;encrypt=true;TrustServerCertificate=true;";
+            String dbUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=CNPM_ThueTro;instance=SERVER_NA;encrypt=true;TrustServerCertificate=true;";
             String dbClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
             try {

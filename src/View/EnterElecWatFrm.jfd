@@ -6,7 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[178,fill][117,fill][123,fill][105,fill][152,fill][259,fill]"
-			"$rowConstraints": "[][124][48][92][46][45][47][263]"
+			"$rowConstraints": "[][81][20][][][92][46][45][47][270]"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -18,51 +18,65 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "txtRoomName"
-				"text": "Room Name"
+				"text": "Room"
 				"font": new java.awt.Font( "Inter", 0, 18 )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 2,alignx center,growx 0"
+				"value": "cell 4 2,alignx left,growx 0"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "txtElecIndex"
+				"text": "Electric Index"
+				"font": &Font0 new java.awt.Font( "Inter", 0, 18 )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 4 3"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "txtWatIndex"
+				"text": "Water Index"
+				"font": #Font0
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 4 4"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "New electric index"
 				"font": new java.awt.Font( "Inter", 0, 18 )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 4,alignx left,growx 0"
+				"value": "cell 1 6,alignx left,growx 0"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtNEI"
 				"font": new java.awt.Font( "Inter", 0, 18 )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 4 3 1, grow"
+				"value": "cell 2 6 3 1,grow"
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": "New water index"
 				"font": new java.awt.Font( "Inter", 0, 18 )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 1 5"
+				"value": "cell 1 7"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "txtNWI"
 				"font": new java.awt.Font( "Inter", 0, 18 )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 5 3 1, grow"
+				"value": "cell 2 7 3 1,grow"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnCancel"
 				"text": "Cancel"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 2 6"
+				"value": "cell 2 8"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "btnContinue"
 				"text": "Continue"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 4 6"
+				"value": "cell 4 8"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 20 )
+			"location": new java.awt.Point( 0, 5 )
 			"size": new java.awt.Dimension( 1000, 750 )
 		} )
 	}

@@ -86,6 +86,12 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 2 5 4 1"
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnBack"
+				"text": "Back to home"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 2 6"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 1000, 750 )

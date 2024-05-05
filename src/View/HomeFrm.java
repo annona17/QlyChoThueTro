@@ -16,15 +16,9 @@ import net.miginfocom.swing.*;
  * @author HP
  */
 public class HomeFrm extends JFrame implements ActionListener {
-    private JLabel label1;
-    private JButton btnBoardHouseManage;
-    private JButton btnRoomManage;
-    private JButton btnClientManage;
-    private JButton btnService;
     private JButton btnInvoiceMonthly;
-    private JButton btnPay;
-    private JButton btnStatistic;
-    private Host host;
+    private JButton btnLogout;
+    private final Host host;
     public HomeFrm(Host host) {
         this.host = host;
         initComponents();
@@ -33,14 +27,15 @@ public class HomeFrm extends JFrame implements ActionListener {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-        label1 = new JLabel();
-        btnBoardHouseManage = new JButton();
-        btnRoomManage = new JButton();
-        btnClientManage = new JButton();
-        btnService = new JButton();
+        JLabel label1 = new JLabel();
+        btnLogout = new JButton();
+        JButton btnBoardHouseManage = new JButton();
+        JButton btnRoomManage = new JButton();
+        JButton btnClientManage = new JButton();
+        JButton btnService = new JButton();
         btnInvoiceMonthly = new JButton();
-        btnPay = new JButton();
-        btnStatistic = new JButton();
+        JButton btnPay = new JButton();
+        JButton btnStatistic = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -57,6 +52,7 @@ public class HomeFrm extends JFrame implements ActionListener {
             // rows
             "[]" +
             "[61]" +
+            "[]" +
             "[88]" +
             "[115]" +
             "[108]" +
@@ -69,56 +65,64 @@ public class HomeFrm extends JFrame implements ActionListener {
         label1.setFont(new Font("Inter", Font.BOLD, 36));
         contentPane.add(label1, "cell 3 1,align center center,grow 0 0");
 
+        //---- btnLogout ----
+        btnLogout.setText("Log out");
+        btnLogout.addActionListener(this);
+        contentPane.add(btnLogout, "cell 6 2");
+
         //---- btnBoardHouseManage ----
         btnBoardHouseManage.setText("BoardHouse Manage");
         btnBoardHouseManage.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnBoardHouseManage, "cell 1 3, grow");
+        contentPane.add(btnBoardHouseManage, "cell 1 4,grow");
 
         //---- btnRoomManage ----
         btnRoomManage.setText("Room Manage");
         btnRoomManage.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnRoomManage, "cell 3 3, grow");
+        contentPane.add(btnRoomManage, "cell 3 4,grow");
 
         //---- btnClientManage ----
         btnClientManage.setText("Client Mangage");
         btnClientManage.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnClientManage, "cell 5 3,grow");
+        contentPane.add(btnClientManage, "cell 5 4,grow");
 
         //---- btnService ----
         btnService.setText("Service");
         btnService.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnService, "cell 1 4, grow");
+        contentPane.add(btnService, "cell 1 5,grow");
 
         //---- btnInvoiceMonthly ----
         btnInvoiceMonthly.setText("Invoice Monthly");
         btnInvoiceMonthly.setFont(new Font("Inter", Font.PLAIN, 24));
-        btnInvoiceMonthly.addActionListener(this::actionPerformed);
-        contentPane.add(btnInvoiceMonthly, "cell 3 4, grow");
+        btnInvoiceMonthly.addActionListener(this);
+        contentPane.add(btnInvoiceMonthly, "cell 3 5,grow");
 
         //---- btnPay ----
         btnPay.setText("Pay");
         btnPay.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnPay, "cell 5 4,grow");
+        contentPane.add(btnPay, "cell 5 5,grow");
 
         //---- btnStatistic ----
         btnStatistic.setText("Statistic");
         btnStatistic.setFont(new Font("Inter", Font.PLAIN, 24));
-        contentPane.add(btnStatistic, "cell 3 6, grow");
+        contentPane.add(btnStatistic, "cell 3 7,grow");
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        // JFormDesigner - End of component initialization
+        this.setSize(1000, 750);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-    ;@Override
+
+    // JFormDesigner - End of variables declaration
+    @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        if(e.getSource().equals(btnInvoiceMonthly)){
-            InvoiceMonthlyFrm frm = new InvoiceMonthlyFrm(host);
-            frm.setVisible(true);
+        if (e.getSource() == btnLogout) {
             this.dispose();
+            new LoginFrm().setVisible(true);
+        }else if (e.getSource() == btnInvoiceMonthly) {
+            this.dispose();
+            new InvoiceMonthlyFrm(host).setVisible(true);
         }
     }
-    // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

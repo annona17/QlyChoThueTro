@@ -224,6 +224,7 @@ public class ConfirmFrm extends JFrame implements ActionListener {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization
+        this.setSize(1000, 750);
     }
 
     // JFormDesigner - End of variables declaration
@@ -231,11 +232,12 @@ public class ConfirmFrm extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         MonthlyBillDAO monthlyBillDAO = new MonthlyBillDAO();
         if (e.getSource() == btnConfirm) {
-            monthlyBillDAO.addUsedPostpaidService(monthlyBill);
-            monthlyBillDAO.addMonthlyBill(monthlyBill);
-            monthlyBillDAO.updateRoom(monthlyBill);
-            JOptionPane.showMessageDialog(this, "Add monthly bill successfully");
-            this.dispose();
+            if (monthlyBillDAO.addUsedPostpaidService(monthlyBill)
+                    && monthlyBillDAO.addMonthlyBill(monthlyBill)
+                    && monthlyBillDAO.updateRoom(monthlyBill)){
+                JOptionPane.showMessageDialog(this, "Add monthly bill successfully");
+                this.dispose();
+            }
         }else if (e.getSource() == btnCancel) {
             this.dispose();
         }

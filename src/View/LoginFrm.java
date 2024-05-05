@@ -17,13 +17,9 @@ import net.miginfocom.swing.*;
  * @author HP
  */
 public class LoginFrm extends JFrame implements ActionListener {
-    private JLabel label3;
-    private JLabel lblUsername;
     private JTextField txtUsername;
-    private JLabel lblPassword;
     private JPasswordField txtPassword;
     private JButton btnLogin;
-    private JButton btnForgot;
     public LoginFrm() {
         initComponents();
     }
@@ -31,10 +27,10 @@ public class LoginFrm extends JFrame implements ActionListener {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-        label3 = new JLabel();
-        lblUsername = new JLabel();
+        JLabel label3 = new JLabel();
+        JLabel lblUsername = new JLabel();
         txtUsername = new JTextField();
-        lblPassword = new JLabel();
+        JLabel lblPassword = new JLabel();
         txtPassword = new JPasswordField();
         btnLogin = new JButton();
 
@@ -86,13 +82,15 @@ public class LoginFrm extends JFrame implements ActionListener {
         contentPane.add(btnLogin, "cell 4 6,grow");
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+        // JFormDesigner - End of component initialization
+        this.setSize(1000, 750);
     }
 
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-    // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+    // JFormDesigner - End of variables declaration
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLogin)) {

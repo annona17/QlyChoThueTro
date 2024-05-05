@@ -22,12 +22,13 @@ import net.miginfocom.swing.*;
  * @author HP
  */
 public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
-    private ArrayList<RentedRoom> lstUnBillRoom;
     private JTextField txtForMonth;
     private JButton btnLoad;
     private JTable tblUnBillRoom;
+    private JButton btnBack;
+    private ArrayList<RentedRoom> lstUnBillRoom;
     private String month;
-    private Host host;
+    private final Host host;
     public InvoiceMonthlyFrm(Host host) {
         this.host = host;
         initComponents();
@@ -42,6 +43,7 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
         btnLoad = new JButton();
         JScrollPane scrollPane1 = new JScrollPane();
         tblUnBillRoom = new JTable();
+        btnBack = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -72,6 +74,7 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
         //---- lblForMonth ----
         lblForMonth.setText("For Month");
         lblForMonth.setFont(new Font("Inter", Font.PLAIN, 16));
+        txtForMonth.setFont(new Font("Inter", Font.PLAIN, 16));
         contentPane.add(lblForMonth, "cell 2 3,alignx right,growx 0");
         contentPane.add(txtForMonth, "cell 3 3, grow");
 
@@ -83,14 +86,13 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
 
         //======== scrollPane1 ========
         {
-
             //---- tblUnBillRoom ----
             tblUnBillRoom.setModel(new DefaultTableModel(
                 new Object[][] {
                     {null, null, null, null, "", null, null},
                 },
                 new String[] {
-                    "STT", "ID RentedRoom", "Price", "StartDate Rent", "EndDate Rent", "Deposit", "Debt"
+                    "STT", "ID room", "Name", "Type", "Description", "Price", "Status"
                 }
             ));
             scrollPane1.setViewportView(tblUnBillRoom);
@@ -111,11 +113,20 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
             });
         }
         contentPane.add(scrollPane1, "cell 2 5 4 1");
+
+        //---- btnBack ----
+        btnBack.setText("Back to home");
+        btnBack.addActionListener(this);
+        contentPane.add(btnBack, "cell 2 6");
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        // JFormDesigner - End of component initialization
+        this.setSize(1000, 750);
     }
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
+    // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
 
+    // JFormDesigner - End of variables declaration
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLoad)) {
@@ -127,6 +138,15 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
             if (month.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please enter month");
             }else if (lstUnBillRoom.isEmpty()) {
+                // clear bang cu
+                DefaultTableModel tableModel = new DefaultTableModel(value, columnNames) {
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        //unable to edit cells
+                        return false;
+                    }
+                };
+                tblUnBillRoom.setModel(tableModel);
                 JOptionPane.showMessageDialog(null, "No room to bill");
             }else{
                 for (int i = 0; i < lstUnBillRoom.size(); i++) {
@@ -147,15 +167,9 @@ public class InvoiceMonthlyFrm extends JFrame implements ActionListener {
                 };
                 tblUnBillRoom.setModel(tableModel);
             }
+        } else if (e.getSource().equals(btnBack)) {
+            this.dispose();
+            new HomeFrm(host).setVisible(true);
         }
     }
-    public static void main(String[] args) {
-        InvoiceMonthlyFrm imf = new InvoiceMonthlyFrm(new Host());
-        imf.setVisible(true);
-    }
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Evaluation license - Luu Ngoc Anh
-    
-    // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
